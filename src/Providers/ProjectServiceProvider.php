@@ -21,6 +21,7 @@ class ProjectServiceProvider extends ServiceProvider
         //Load Controllers
         $this->app->make('Hcode\Project\Http\Controllers\AppController');
         $this->app->make('Hcode\Project\Http\Controllers\AppCrudController');
+        $this->app->make('Hcode\Project\Helpers\hcFunctions');
         
         //Load Views
         $this->loadViewsFrom(__DIR__.'/../resources/views/crud', 'crud');
@@ -49,9 +50,5 @@ class ProjectServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config' => $this->app->basePath() . '/config',
         ], 'hcode-config');
-
-        // foreach (glob(__DIR__.'/../Helpers/*.php') as $filename) {
-        //     require_once $filename;
-        // }
     }
 }
