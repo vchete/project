@@ -50,8 +50,8 @@ class ProjectServiceProvider extends ServiceProvider
             __DIR__.'/../config' => $this->app->basePath() . '/config',
         ], 'hcode-config');
 
-        foreach (glob(__DIR__.'/../Helpers/*.php') as $filename) {
-            require_once $filename;
-        }
+        // foreach (glob(__DIR__.'/../Helpers/*.php') as $filename) {
+        //     require_once $filename;
+        // }
     }
 }
