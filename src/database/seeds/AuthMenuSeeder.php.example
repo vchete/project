@@ -1,0 +1,53 @@
+<?php
+use Illuminate\Database\Seeder;
+use App\Models\Auth\Modulo;
+use App\Models\Auth\Permiso;
+use App\Models\Auth\ModuloPermiso;
+
+class AuthMenuSeeder extends Seeder
+{
+    private $modulos  = [];
+    private $permisos = [];
+    private $inserts  = [];
+
+    public function run()
+    {
+        $this->modulos  = Modulo::select('modulo_id', 'nombre')->get();
+        $this->permisos = Permiso::select('permiso_id', 'nombre')->get();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('auth_menu')->truncate();
+
+        $this->add('inicio', 'Dashboard', 1000, null, 'fas fa-tachometer-alt'); //1
+        $this->add(null, 'Admin', 50000, null, 'fas fa-user-shield'); //2
+
+        // $this->add('admin.configuracion-general', 'Configuración General', 100, 2, null); //Constantes
+        $this->add('admin.roles', 'Roles', 200, 2, null);
+        $this->add('admin.usuarios', 'Usuarios', 300, 2, null);
+
+
+        DB::table('auth_menu')->insert($this->inserts);
+
+        DB::statement('UPDATE auth_menu SET created_at=NOW(), updated_at=NOW()');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+    }
+
+    private function add($aModulo, $aNombre, $aOrden, $aPadreId = null, $aIcono = null, $aPermiso = 'index')
+    {
+        try {
+            $moduloid        = $this->modulos->where('nombre', $aModulo)->first()->modulo_id;
+            $permisoid       = $this->permisos->where('nombre', $aPermiso)->first()->permiso_id;
+            $modulopermisoid = ModuloPermiso::where('modulo_id', $moduloid)->where('permiso_id', $permisoid)->first()->modulo_permiso_id;
+        } catch (Exception $e) {
+            $modulopermisoid = null;
+        }
+
+        $this->inserts[] = [
+            'padre_id'         => $aPadreId,
+            'modulo_permiso_id' => $modulopermisoid,
+            'nombre'          => $aNombre,
+            'orden'           => $aOrden,
+            'icono'           => $aIcono,
+        ];
+    }
+}

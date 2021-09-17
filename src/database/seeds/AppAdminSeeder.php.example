@@ -1,0 +1,15 @@
+<?php
+use Illuminate\Database\Seeder;
+
+class AppAdminSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+
+        DB::statement('DELETE FROM auth_rol_modulo_permisos WHERE rol_id = 1');
+        DB::statement('INSERT INTO auth_rol_modulo_permisos (rol_id, modulo_permiso_id, created_at, updated_at) SELECT 1, modulo_permiso_id, NOW(), NOW() FROM auth_modulo_permisos');
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+    }
+}

@@ -1,0 +1,95 @@
+<?php
+
+use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+
+/*
+|--------------------------------------------------------------------------
+| Console Routes
+|--------------------------------------------------------------------------
+|
+| This file is where you may define all of your Closure based console
+| commands. Each Closure is bound to a command instance allowing a
+| simple approach to interacting with each command's IO methods.
+|
+*/
+
+function getDbs ($tenantids = null) {
+    $query = DB::connection('tenants')
+      ->table('tenants')
+      ->select('db', 'db_password', 'db_username')
+      ->where('activo', true)
+      ->orderBy('tenant_id');
+
+    if ($tenantids) {
+      $query->whereIn('tenant_id', $tenantids);
+    }
+
+    $dbs = $query->groupBy('db')->get();
+
+    if ($dbs->isEmpty()) {
+      throw new Exception('Data Base not exist.');
+    }
+
+    return $dbs;
+}
+
+Artisan::command('inspire', function () {
+    $this->comment(Inspiring::quote());
+})->purpose('Display an inspiring quote');
+
+Artisan::command('migrarTts {--force}', function ($force) {
+  $this->call('migrate', ['--database' => 'tenants', '--path' => 'database/migrations/tenants','--force' => $force]);
+})->describe('Migrate tenants');
+
+Artisan::command('migrarTts:rollback {--force}', function ($force) {
+  $this->call('migrate:rollback', ['--database' => 'tenants', '--path' => 'database/migrations/tenants','--force' => $force]);
+})->describe('Rollback tenants');
+
+Artisan::command('migrar {--t|tenantid=*} {--force}', function ($tenantid, $force) {
+    $dbs = getDbs($tenantid);
+    foreach ($dbs as $db) {
+      $this->info('Migrate DB: ' . $db->db);
+      DB::purge('mysql');
+      Config::set('database.connections.mysql.database',  $db->db);
+      Config::set('database.connections.mysql.username',  $db->db_username);
+      Config::set('database.connections.mysql.password',  $db->db_password);
+      DB::reconnect('mysql');
+      $this->call('migrate', ['--force' => $force]);
+    }
+  })->describe('Migrate para multitenants');
+
+  Artisan::command('migrar:rollback {--t|tenantid=*} {--force}', function ($tenantid, $force) {
+    $dbs = getDbs($tenantid);
+    foreach ($dbs as $db) {
+      $this->info('Rollback DB: ' . $db->db);
+      DB::purge('mysql');
+      Config::set('database.connections.mysql.database',  $db->db);
+      Config::set('database.connections.mysql.username',  $db->db_username);
+      Config::set('database.connections.mysql.password',  $db->db_password);
+      DB::reconnect('mysql');
+      $this->call('migrate:rollback', ['--force' => $force]);
+    }
+  })->describe('Rollback para multitenants');
+
+  Artisan::command('db:init {--class=} {--t|tenantid=*} {--force}', function ($class = null, $tenantid = null, $force = true) {
+    if ($class === 'InicialSeeder' && empty($tenantid)) {
+      return $this->info('Especificar tenantid con -t.');
+    }
+
+    $dbs = getDbs($tenantid);
+    foreach ($dbs as $db) {
+      $this->info('Seed DB: ' . $db->db);
+      DB::purge('mysql');
+      Config::set('database.connections.mysql.database',  $db->db);
+      Config::set('database.connections.mysql.username',  $db->db_username);
+      Config::set('database.connections.mysql.password',  $db->db_password);
+      DB::reconnect('mysql');
+      $options = [];
+      if ($class) {
+        $options['--class'] = $class;
+      }
+      $options['--force'] = $force;
+      $this->call('db:seed', $options);
+    }
+  })->describe('Seed para multitenants');

@@ -1,0 +1,33 @@
+{
+    "name": "hcode/crud",
+    "description": "HCodeProject",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "vchete",
+            "email": "vjchete@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hcode\\Project\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hcode\\Project\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hcode\\Project\\Providers\\ProjectServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,67 @@
+<?php
+use Illuminate\Database\Seeder;
+
+class AppDefaultSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('auth_roles')->truncate();
+        DB::table('auth_usuarios')->truncate();
+        DB::table('auth_usuario_roles')->truncate();
+        DB::table('auth_rol_modulo_permisos')->truncate();
+
+        DB::table('auth_roles')->insert([
+            [
+                'rol_id' => 1,
+                'nombre' => 'Admin Dev',
+            ],
+            [
+                'rol_id' => 2,
+                'nombre' => 'Administrador',
+            ],
+            [
+                'rol_id' => 3,
+                'nombre' => 'Cajero',
+            ]
+        ]);
+
+        DB::table('auth_usuarios')->insert([
+            [
+                'usuario_id'     => 1,
+                'email'          => 'test@test.com',
+                'password'       => '$2y$10$ul1mWEDYr5UYd6f.wc.sZOykITOElxdrLcRLUxjQBIpbhlrtfTUTq', //Test$$..
+                'nombres'        => 'Test',
+                'apellidos'      => 'Test',
+                'remember_token' => 'aMLxQX5Reo04US79n4tXvYWYcLTKA1r1UVDjN4Sj7vD06seWzef0kSuF7kEY'
+            ]
+        ]);
+
+        DB::table('auth_usuario_roles')->insert([
+            [
+                'usuario_rol_id' => 1,
+                'usuario_id'     => 1,
+                'rol_id'         => 1,
+            ],
+        ]);
+
+        // DB::table('constantes')->insert([
+        //     [
+        //         'constante_key' => 'institucion_nombre',
+        //         'valor'         => '',
+        //         'descripcion'   => null
+        //     ]
+        // ]);
+        
+        DB::statement('UPDATE auth_roles SET created_at=NOW(), updated_at=NOW()');
+        DB::statement('UPDATE auth_usuarios SET created_at=NOW(), updated_at=NOW()');
+        DB::statement('UPDATE auth_usuario_roles SET created_at=NOW(), updated_at=NOW()');
+        DB::statement('UPDATE auth_rol_modulo_permisos SET created_at=NOW(), updated_at=NOW()');
+        // DB::statement('UPDATE constantes SET created_at=NOW(), updated_at=NOW()');
+        
+        $DB = new \DatabaseSeeder;
+        $DB->run();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+    }
+}

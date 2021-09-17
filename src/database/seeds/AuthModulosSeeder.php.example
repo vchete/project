@@ -1,0 +1,23 @@
+<?php
+use Illuminate\Database\Seeder;
+
+class AuthModulosSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('auth_modulos')->truncate();
+
+        DB::table('auth_modulos')->insert([
+            ['modulo_id' => 1, 'nombre' => 'inicio', 'nombre_friendly' => 'Dashboard'],
+            ['modulo_id' => 2, 'nombre' => 'admin.roles', 'nombre_friendly' => 'Admin - Roles'],
+            ['modulo_id' => 3, 'nombre' => 'admin.usuarios', 'nombre_friendly' => 'Admin - Usuarios'],
+            // ['modulo_id' => 4, 'nombre' => 'admin.configuracion-general', 'nombre_friendly' => 'Admin - Configuración General']
+
+
+        ]);
+        
+        DB::statement('UPDATE auth_modulos SET created_at=NOW(), updated_at=NOW()');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+    }
+}

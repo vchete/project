@@ -1,0 +1,65 @@
+<?php
+use Illuminate\Database\Seeder;
+
+class AuthPermisosSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('auth_permisos')->truncate();
+
+        DB::table('auth_permisos')->insert([
+            [
+                'permiso_id'      => 1,
+                'nombre'          => 'index',
+                'nombre_friendly' => 'Ver',
+                'mostrar'         => true,
+            ],
+            [
+                'permiso_id'      => 2,
+                'nombre'          => 'create',
+                'nombre_friendly' => 'Crear',
+                'mostrar'         => true,
+            ],
+            [
+                'permiso_id'      => 3,
+                'nombre'          => 'store',
+                'nombre_friendly' => 'Guardar',
+                'mostrar'         => false,
+            ],
+            [
+                'permiso_id'      => 4,
+                'nombre'          => 'edit',
+                'nombre_friendly' => 'Editar',
+                'mostrar'         => true,
+            ],
+            [
+                'permiso_id'      => 5,
+                'nombre'          => 'update',
+                'nombre_friendly' => 'Actualizar',
+                'mostrar'         => false,
+            ],
+            [
+                'permiso_id'      => 6,
+                'nombre'          => 'destroy',
+                'nombre_friendly' => 'Borrar',
+                'mostrar'         => true,
+            ],
+            [
+                'permiso_id'      => 7,
+                'nombre'          => 'data',
+                'nombre_friendly' => 'Obtener datos',
+                'mostrar'         => true,
+            ],
+            [
+                'permiso_id'      => 8,
+                'nombre'          => 'show',
+                'nombre_friendly' => 'Ver información',
+                'mostrar'         => true,
+            ],
+        ]);
+
+        DB::statement('UPDATE auth_permisos SET created_at=NOW(), updated_at=NOW()');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+    }
+}
