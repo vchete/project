@@ -8,7 +8,7 @@
             "email": "vjchete@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {},
     "require-dev": {
         "phpunit/phpunit": "^8.5"
