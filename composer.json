@@ -8,10 +8,8 @@
             "email": "vjchete@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {},
-    "require-dev": {
-        "phpunit/phpunit": "^8.5"
+    "require": {
+        "php": "^7.2.5|^8.0"
     },
     "autoload": {
         "psr-4": {
@@ -29,5 +27,7 @@
                 "Hcode\\Project\\Providers\\ProjectServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
