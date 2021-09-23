@@ -56,13 +56,13 @@ copy all directories components vue
 php artisan make:hcodeVue
 ```
  
-## hcAccess to permission with routes
+## Middleware "hcAccess" to permission with routes
 #### copy in config/app.php
 ```
 Hcode\Project\Providers\ProjectAppAccessServiceProvider::class,
 ```
 
-## hcMenu build menu for application
+## Middleware "hcMenu" build menu for application
 #### copy in config/app.php
 ```
 Hcode\Project\Providers\ProjectAppMenuServiceProvider::class,
