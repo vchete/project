@@ -8,48 +8,72 @@
 
 ###### Prerequisites 
 1. require install ui/auth
-``` composer require laravel/ui ```  
-``` php artisan ui:auth ```
+```
+composer require laravel/ui
+```  
+```
+php artisan ui:auth
+```
 
 ### Installation
 2. Install package
-``` composer hcode/proyect ```
+```
+composer hcode/proyect
+```
 
 3. copy in config/app.php
-``` Hcode\Project\Providers\ProjectServiceProvider::class, ```
+```
+Hcode\Project\Providers\ProjectServiceProvider::class,
+```
 
-``` 'AppCrudController' => Hcode\Project\Http\Controllers\AppCrudController::class, ```
-``` 'AppController' => Hcode\Project\Http\Controllers\AppController::class, ```
-``` 'AppFunctions' => Hcode\Project\Http\Controllers\hcFunctions::class, ```
+```
+'AppCrudController' => Hcode\Project\Http\Controllers\AppCrudController::class,
+'AppController' => Hcode\Project\Http\Controllers\AppController::class,
+'AppFunctions' => Hcode\Project\Http\Controllers\hcFunctions::class,
+```
 
 4. vendor::publish
-``` php artisan vendor:publish --provider=Hcode\Project\Providers\ProjectServiceProvider ```
+```
+php artisan vendor:publish --provider=Hcode\Project\Providers\ProjectServiceProvider
+```
 
 ## Initial Crud
 #### Command
 copy all directories crud
-``` php artisan make:hcodeCrud ```
+```
+php artisan make:hcodeCrud
+```
 
 ###### not required, only to personalizate view crud
-``` php artisan make:hcodeViews ```
+```
+php artisan make:hcodeViews
+```
 
 ## Initial Vue
 #### Command
 copy all directories components vue
-``` php artisan make:hcodeVue ```
+```
+php artisan make:hcodeVue
+```
  
 ## hcAccess to permission with routes
 #### copy in config/app.php
-``` Hcode\Project\Providers\ProjectAppAccessServiceProvider::class, ```
+```
+Hcode\Project\Providers\ProjectAppAccessServiceProvider::class,
+```
 
 ## hcMenu build menu for application
 #### copy in config/app.php
-``` Hcode\Project\Providers\ProjectAppMenuServiceProvider::class, ```
+```
+Hcode\Project\Providers\ProjectAppMenuServiceProvider::class,
+```
 
 ***
 ## Template AdminTL3
 #### Command copy all directories
-``` php artisan make:hcodeTemplate adminLTE  ```
+```
+php artisan make:hcodeTemplate adminLTE 
+```
 
 
 ## Helps
