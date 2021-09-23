@@ -34,7 +34,7 @@ Hcode\Project\Providers\ProjectServiceProvider::class,
 
 4. vendor::publish
 ```
-php artisan vendor:publish --provider=Hcode\Project\Providers\ProjectServiceProvider
+php artisan vendor:publish --provider="Hcode\Project\Providers\ProjectServiceProvider"
 ```
 
 ## Initial Crud
