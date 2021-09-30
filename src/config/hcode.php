@@ -2,10 +2,19 @@
 return [
     'crud' => [
         'view' => [
-            'index'        => 'crud::index',
-            'edit'         => 'crud::edit',
-            'errorGeneric' => 'errors::generic',
-            'backendIndex' => 'backend::index' //component vue
+            //Crud
+            'index'                   => 'crud::index',
+            'edit'                    => 'crud::edit',
+            'errorGeneric'            => 'errors::generic',
+            //To component vue
+            'backendIndex'            => 'backend::index',
+            //Layouts
+            'layoutApp'               => 'layout.app',
+            'layoutSectionContent'    => 'content',
+            'layoutSectionHead'       => 'head',
+            'layoutSectionJs'         => 'js',
+            'layoutSectionPageTitle'  => 'pageTitle',
+            'layoutSectionBreadcrumb' => 'breadCrump'
         ],
     ],
     'dataTable' => [

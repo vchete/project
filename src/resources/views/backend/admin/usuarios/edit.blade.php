@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends(config('hcode.crud.view.layoutApp'))
 
-@section('content')
+@section(config('hcode.crud.view.layoutSectionContent'))
 <div class="card">
     @php
         $action = $data ? route('admin.usuarios.update', Crypt::encrypt($data->usuario_id)) : route('admin.usuarios.store');

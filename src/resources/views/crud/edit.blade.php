@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends(config('hcode.crud.view.layoutApp'))
 
-@section('head')
+@section(config('hcode.crud.view.layoutSectionHead'))
 @php
 $includefechas = false;
 $includeselect = false;
@@ -36,7 +36,7 @@ foreach ($fields as $f) {
 
 @endsection
 
-@section('content')
+@section(config('hcode.crud.view.layoutSectionContent'))
 	<div class="card">
 		<div class="card-body">
 			<form method="POST" action="{{ $route }}" class="form-online" id="frmCrud" enctype="multipart/form-data">
@@ -221,7 +221,7 @@ foreach ($fields as $f) {
 	</div>
 @stop
 
-@section('js')
+@section(config('hcode.crud.view.layoutSectionJs'))
 	@if($includefechas)
 	<script src="{{ asset('sources/datetimepicker/moment.js') }}"></script>
 	<script src="{{ asset('sources/datetimepicker/datetimepicker.js') }}"></script>

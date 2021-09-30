@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends(config('hcode.crud.view.layoutApp'))
 
 
-@section('content')
+@section(config('hcode.crud.view.layoutSectionContent'))
     <{{$component}}/>
 @endsection

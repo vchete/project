@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends(config('hcode.crud.view.layoutApp'))
 
-@section('content')
+@section(config('hcode.crud.view.layoutSectionContent'))
 <div class="card">
     <div class="card-body">
         @php
@@ -79,7 +79,7 @@
 </div>
 @endsection
 
-@section('js')
+@section(config('hcode.crud.view.layoutSectionJs'))
     <script>
         $(document).ready(function () {
             @foreach ($modulos as $m)

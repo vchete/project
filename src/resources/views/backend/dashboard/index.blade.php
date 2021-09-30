@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends(config('hcode.crud.view.layoutApp'))
 
 
-@section('content')
+@section(config('hcode.crud.view.layoutSectionContent'))
     <div class="card">
         <div class="card-body">
             <h1 class="text-center">Inicio</h1>

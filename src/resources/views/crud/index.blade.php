@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends(config('hcode.crud.view.layoutApp'))
 
-@section('head')
+@section(config('hcode.crud.view.layoutSectionHead'))
     <link href="{{ asset('sources/datatable/css/datatable.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('sources/datatable/css/datatable.responsive.min.css') }}" rel="stylesheet" />
 @endsection
 
-@section('content')
+@section(config('hcode.crud.view.layoutSectionContent'))
 <div class="card">
     <div class="card-body">
         @if ($moduleAccess['create'])
@@ -81,7 +81,7 @@
 </div>
 @stop
 
-@section('js')
+@section(config('hcode.crud.view.layoutSectionJs'))
     <script src="{{ asset('sources/datatable/js/datatable.min.js') }}"></script>
     <script src="{{ asset('sources/datatable/js/datatable.bootstrap.min.js') }}"></script>
     <script src="{{ asset('sources/datatable/js/datatable.responsive.min.js') }}"></script>
