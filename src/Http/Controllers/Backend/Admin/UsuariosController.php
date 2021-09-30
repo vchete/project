@@ -8,8 +8,8 @@ use Auth;
 use Crypt;
 use Validator;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AppController;
-use App\Http\Controllers\AppCrudController;
+use Hcode\Project\Http\Controllers\AppController;
+use Hcode\Project\Http\Controllers\AppCrudController;
 
 use App\Models\Auth\Rol;
 use App\Models\Auth\Usuario;

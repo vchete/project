@@ -9,7 +9,7 @@ return [
             //To component vue
             'backendIndex'            => 'backend::index',
             //Layouts
-            'layoutApp'               => 'layout.app',
+            'layoutApp'               => 'layouts.app',
             'layoutSectionContent'    => 'content',
             'layoutSectionHead'       => 'head',
             'layoutSectionJs'         => 'js',
