@@ -4,7 +4,7 @@ namespace Hcode\Project\Helpers;
 use App\Http\Controllers\Controller;
 
 
-class hcFunctions extends Controller {
+class AppFunctionController extends Controller {
     public static function getNombreGenero($alias)
     {
         $alias = strtolower($alias);

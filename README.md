@@ -27,9 +27,9 @@ Hcode\Project\Providers\ProjectServiceProvider::class,
 ```
 
 ```
-'AppCrudController' => Hcode\Project\Http\Controllers\AppCrudController::class,
-'AppController' => Hcode\Project\Http\Controllers\AppController::class,
-'AppFunctions' => Hcode\Project\Http\Controllers\hcFunctions::class,
+'HcAppCrud' => Hcode\Project\Http\Controllers\AppCrudController::class,
+// 'HcApp' => Hcode\Project\Http\Controllers\AppController::class,
+// 'HcAppFunction' => Hcode\Project\Http\Controllers\AppFunctionController::class,
 ```
 
 4. vendor::publish

@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{ asset('sources/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('sources/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('sources/overlayScrollbars/css/overlayScrollbars.min.css') }}">
+    {{--  <link rel="stylesheet" href="{{ asset('css/app-styles.css') }}">  --}}
+
     @yield('head')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

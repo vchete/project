@@ -21,7 +21,7 @@ class ProjectServiceProvider extends ServiceProvider
         //Load Controllers
         $this->app->make('Hcode\Project\Http\Controllers\AppController');
         $this->app->make('Hcode\Project\Http\Controllers\AppCrudController');
-        $this->app->make('Hcode\Project\Helpers\hcFunctions');
+        $this->app->make('Hcode\Project\Http\Controllers\AppFunctionController');
         
         //Load Views
         $this->loadViewsFrom(__DIR__.'/../resources/views/crud', 'crud');
