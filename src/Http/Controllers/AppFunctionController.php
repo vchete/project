@@ -1,5 +1,5 @@
 <?php
-namespace Hcode\Project\Helpers;
+namespace Hcode\Project\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
