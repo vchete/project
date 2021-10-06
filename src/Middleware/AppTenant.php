@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Middleware;
+namespace Hcode\Project\Middleware;
 
 use Config;
 use Closure;

@@ -18,7 +18,7 @@ class TenantCommand extends Command {
 
   public function handle() {
     $this->exportFiles();
-    $this->info('Hcode Crud, successful.');
+    $this->info('Hcode Tenant, successful.');
   }
 
   protected function exportFiles() {

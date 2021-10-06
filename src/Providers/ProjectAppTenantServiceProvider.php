@@ -3,7 +3,7 @@
 namespace Hcode\Project\Providers;
 
 use Illuminate\Routing\Router;
-use App\Http\Middleware\AppTenant;
+use Hcode\Project\Middleware\AppTenant;
 use Illuminate\Support\ServiceProvider;
 
 class ProjectAppTenantServiceProvider extends ServiceProvider
@@ -13,8 +13,8 @@ class ProjectAppTenantServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(\Illuminate\Contracts\Http\Kernel $kernel)
     {
-        $this->app->make(Router::class)->aliasMiddleware('hcTenant', AppTenant::class);
+       $kernel->pushMiddleware(AppTenant::class);
     }
 }
