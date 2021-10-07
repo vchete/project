@@ -13,7 +13,7 @@ class TenantCommand extends Command {
 
   protected $directoryTo = [
     'Models/Tenant' => 'app/Models/HcodeRenameToTenant',
-    'routes'        => 'app/routes',
+    'routes'        => 'routes',
   ];
 
   public function handle() {
