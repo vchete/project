@@ -36,7 +36,7 @@ function getDbs ($tenantids = null) {
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+})->describe('Display an inspiring quote');
 
 Artisan::command('migrarTts {--force}', function ($force) {
   $this->call('migrate', ['--database' => 'tenants', '--path' => 'database/migrations/tenants','--force' => $force]);
