@@ -18,7 +18,7 @@ class AppTenant
             if ($request->expectsJson()) {
                 return response()->json(['error' => 'Empresa inexistente.' . $dominio], 404);
             } else {
-                return response()->view('errors:404', ['message' => 'Empresa inexistente.']);
+                return response()->view('errors::404', ['message' => 'Empresa inexistente.']);
             }
         }
         
